@@ -1,0 +1,282 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  CUSTOMER
+  SELLER
+  ADMIN
+  DELIVERY_PARTNER
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PaymentGateway {
+  STRIPE
+  RAZORPAY
+}
+
+enum DeliveryStatus {
+  ASSIGNED
+  PICKED_UP
+  DELIVERED
+  FAILED
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  phoneNumber   String?         @unique
+  name          String
+  passwordHash  String?
+  role          Role            @default(CUSTOMER)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  
+  // Relations
+  profile       UserProfile?
+  sellerProfile SellerProfile?
+  deliveryProfile DeliveryProfile?
+  addresses     Address[]
+  orders        Order[]
+  reviews       Review[]
+  cart          Cart?
+  notifications Notification[]
+}
+
+model UserProfile {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  avatarUrl String?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SellerProfile {
+  id                String             @id @default(uuid())
+  userId            String             @unique
+  shopName          String             @unique
+  shopDescription   String?
+  shopLogo          String?
+  shopBanner        String?
+  gstin             String?            // Tax Registration (for India)
+  taxId             String?            // General VAT/Tax ID
+  verificationStatus VerificationStatus @default(PENDING)
+  bankAccountDetails Json?             // Encrypted bank details
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  products          Product[]
+}
+
+model DeliveryProfile {
+  id             String         @id @default(uuid())
+  userId         String         @unique
+  vehicleType    String         // BICYCLE, MOTORCYCLE, CAR
+  vehicleNumber  String?
+  licenseNumber  String?
+  isOnline       Boolean        @default(false)
+  currentLat     Float?
+  currentLng     Float?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deliveries     Delivery[]
+}
+
+model Address {
+  id           String   @id @default(uuid())
+  userId       String
+  title        String   // e.g. Home, Office
+  street       String
+  city         String
+  state        String
+  postalCode   String
+  country      String
+  isDefault    Boolean  @default(false)
+  
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders       Order[]
+
+  @@index([userId])
+}
+
+model Category {
+  id        String     @id @default(uuid())
+  name      String
+  slug      String     @unique
+  parentId  String?
+  createdAt DateTime   @default(now())
+  
+  parent    Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children  Category[] @relation("CategoryHierarchy")
+  products  Product[]
+}
+
+model Product {
+  id           String             @id @default(uuid())
+  sellerId     String
+  categoryId   String
+  name         String
+  slug         String             @unique
+  description  String
+  price        Decimal            @db.Decimal(10, 2)
+  comparePrice Decimal?           @db.Decimal(10, 2) // Original price for discounts
+  stock        Int                @default(0)
+  images       String[]           // Array of Cloudinary URLs
+  specifications Json?            // Key-value pairs for attributes
+  status       VerificationStatus @default(PENDING)
+  isActive     Boolean            @default(true)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  
+  seller       SellerProfile      @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  category     Category           @relation(fields: [categoryId], references: [id])
+  reviews      Review[]
+  orderItems   OrderItem[]
+  cartItems    CartItem[]
+
+  @@index([sellerId])
+  @@index([categoryId])
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  cartId    String
+  productId String
+  quantity  Int      @default(1)
+  
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@unique([cartId, productId])
+  @@index([productId])
+}
+
+model Order {
+  id            String      @id @default(uuid())
+  customerId    String
+  addressId     String
+  status        OrderStatus @default(PENDING)
+  totalAmount   Decimal     @db.Decimal(10, 2)
+  shippingCost  Decimal     @db.Decimal(10, 2) @default(0.00)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  customer      User        @relation(fields: [customerId], references: [id])
+  shippingAddress Address   @relation(fields: [addressId], references: [id])
+  items         OrderItem[]
+  payment       Payment?
+  delivery      Delivery?
+
+  @@index([customerId])
+  @@index([addressId])
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Decimal  @db.Decimal(10, 2)
+  
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model Payment {
+  id             String         @id @default(uuid())
+  orderId        String         @unique
+  gateway        PaymentGateway
+  gatewayOrderId String         @unique
+  amount         Decimal        @db.Decimal(10, 2)
+  status         PaymentStatus  @default(PENDING)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  
+  order          Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model Delivery {
+  id                String         @id @default(uuid())
+  orderId           String         @unique
+  deliveryProfileId String?
+  status            DeliveryStatus @default(ASSIGNED)
+  otpCode           String
+  pickupTime        DateTime?
+  deliveryTime      DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  
+  order             Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  deliveryProfile   DeliveryProfile? @relation(fields: [deliveryProfileId], references: [id])
+
+  @@index([deliveryProfileId])
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  productId String
+  customerId String
+  rating    Int      @default(5)
+  comment   String?
+  createdAt DateTime @default(now())
+  
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  customer  User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  
+  @@unique([productId, customerId])
+  @@index([customerId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

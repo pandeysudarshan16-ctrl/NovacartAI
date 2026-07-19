@@ -22,8 +22,8 @@ const MOCK_PRODUCTS = [
     id: "prod-1",
     name: "AeroSound Pro Wireless Headphone",
     slug: "aerosound-pro-wireless-headphone",
-    price: 199.99,
-    comparePrice: 249.99,
+    price: 1199.99,
+    comparePrice: 1249.99,
     images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80"],
     stock: 15,
     seller: { shopName: "AeroTech Official" },
@@ -32,8 +32,8 @@ const MOCK_PRODUCTS = [
     id: "prod-2",
     name: "ChronoClassic Minimalist Watch",
     slug: "chronoclassic-minimalist-watch",
-    price: 129.00,
-    comparePrice: 159.00,
+    price: 1129.00,
+    comparePrice: 1159.00,
     images: ["https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80"],
     stock: 8,
     seller: { shopName: "Chrono Craft" },
@@ -42,7 +42,7 @@ const MOCK_PRODUCTS = [
     id: "prod-3",
     name: "NovaFit Active Sports Sneaker",
     slug: "novafit-active-sports-sneaker",
-    price: 89.99,
+    price: 1089.99,
     comparePrice: null,
     images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80"],
     stock: 22,
@@ -52,8 +52,8 @@ const MOCK_PRODUCTS = [
     id: "prod-4",
     name: "SleekLeather Crossbody Bag",
     slug: "sleekleather-crossbody-bag",
-    price: 145.00,
-    comparePrice: 185.00,
+    price: 1145.00,
+    comparePrice: 1185.00,
     images: ["https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80"],
     stock: 5,
     seller: { shopName: "Sleek Goods" },
@@ -183,7 +183,7 @@ export default function HomePage() {
                       <p className="text-[9px] text-muted-foreground uppercase font-semibold">Featured Gear</p>
                       <p className="text-xs font-bold text-white">AeroSound Headphones</p>
                     </div>
-                    <span className="text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 px-2 py-1 rounded-xl">₹199.99</span>
+                    <span className="text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 px-2 py-1 rounded-xl">₹1199.99</span>
                   </div>
                 </div>
               </Link>

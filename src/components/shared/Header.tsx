@@ -82,9 +82,6 @@ export default function Header() {
               <Link href="/products" className="text-xs text-muted-foreground hover:text-foreground transition font-medium">
                 Shop
               </Link>
-              <Link href="/fluid-glass" className="text-xs text-muted-foreground hover:text-foreground transition font-medium flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" /> Fluid Glass 3D
-              </Link>
             </div>
           </div>
 
@@ -262,12 +259,6 @@ export default function Header() {
               className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground rounded-xl hover:bg-white/5"
             >
               Shop Catalog
-            </Link>
-            <Link
-              href="/fluid-glass"
-              className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground rounded-xl hover:bg-white/5"
-            >
-              Fluid Glass 3D
             </Link>
             {!user && (
               <Link

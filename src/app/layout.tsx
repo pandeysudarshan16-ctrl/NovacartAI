@@ -30,13 +30,23 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
-        <AuthProvider>
-          <CartProvider>
-            {children}
-            <Watermark />
-          </CartProvider>
-        </AuthProvider>
+      <body className="min-h-full flex flex-col font-sans relative overflow-x-hidden bg-slate-950">
+        {/* Background ambient glowing blobs */}
+        <div className="absolute top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-primary/10 blur-[150px] pointer-events-none z-0" />
+        <div className="absolute top-[40%] right-[-15%] h-[500px] w-[500px] rounded-full bg-secondary/5 blur-[120px] pointer-events-none z-0" />
+        <div className="absolute bottom-[-10%] left-[20%] h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[150px] pointer-events-none z-0" />
+
+        {/* Global grid background overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none z-0" />
+
+        <div className="relative z-10 flex-1 flex flex-col">
+          <AuthProvider>
+            <CartProvider>
+              {children}
+              <Watermark />
+            </CartProvider>
+          </AuthProvider>
+        </div>
       </body>
     </html>
   );

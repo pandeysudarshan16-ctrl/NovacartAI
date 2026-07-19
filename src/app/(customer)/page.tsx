@@ -12,7 +12,9 @@ import {
   Home as HomeIcon,
   ShieldCheck,
   Truck,
-  RotateCcw
+  RotateCcw,
+  Sparkles,
+  ShoppingBag
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -61,10 +63,10 @@ const MOCK_PRODUCTS = [
 ];
 
 const CATEGORIES = [
-  { name: "Electronics", slug: "electronics", icon: Smartphone, color: "from-blue-600/20 to-indigo-600/20 border-blue-500/30" },
-  { name: "Fashion", slug: "fashion", icon: Shirt, color: "from-pink-600/20 to-rose-600/20 border-pink-500/30" },
-  { name: "Accessories", slug: "accessories", icon: Watch, color: "from-amber-600/20 to-orange-600/20 border-amber-500/30" },
-  { name: "Home & Living", slug: "home-living", icon: HomeIcon, color: "from-emerald-600/20 to-teal-600/20 border-emerald-500/30" },
+  { name: "Electronics", slug: "electronics", icon: Smartphone },
+  { name: "Fashion", slug: "fashion", icon: Shirt },
+  { name: "Accessories", slug: "accessories", icon: Watch },
+  { name: "Home & Living", slug: "home-living", icon: HomeIcon },
 ];
 
 export default function HomePage() {
@@ -90,149 +92,158 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="space-y-16 pb-16">
+    <div className="space-y-24 pb-24">
 
-      {/* Hero Banner Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-purple-950/20 via-muted to-background border-b border-white/5 py-24 sm:py-32">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden border-b border-white/5 pt-20 pb-20 lg:pt-32 lg:pb-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
-            {/* Left Info */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <motion.span
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="inline-block rounded-full bg-primary/20 border border-primary/30 px-3 py-1 text-xs font-semibold text-primary"
-              >
-                NovaCart AI Core Launch
-              </motion.span>
-              <motion.h1
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="bg-gradient-to-r from-white via-slate-100 to-purple-400 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl"
-              >
+            {/* Left Info Column */}
+            <div className="lg:col-span-7 space-y-8 text-left">
+              
+              {/* Launch Badge */}
+              <div className="inline-flex items-center gap-2 border border-white/10 bg-zinc-950 px-3.5 py-1 text-[9px] font-black uppercase tracking-widest text-zinc-400">
+                <Sparkles className="h-3 w-3 text-white" />
+                <span>NovaCart AI Core Launch</span>
+              </div>
+
+              {/* Headline */}
+              <h1 className="animated-gradient text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none max-w-2xl">
                 Experience the Smartest Marketplace
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-base text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed"
-              >
-                Discover personalized deals, verify authentic products, and track deliveries in real time on NovaCart AI.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
-              >
+              </h1>
+
+              {/* Supporting paragraph */}
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed uppercase tracking-wider max-w-lg font-medium">
+                Discover personalized deals, verify authentic products, and track deliveries in real time on NovaCart AI. Built for the modern consumer.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
                   href="/products"
-                  className="inline-flex h-11 items-center justify-center rounded-xl bg-primary hover:bg-primary/95 px-6 text-sm font-semibold text-white transition shadow shadow-primary/20 gap-1"
+                  className="inline-flex h-10 items-center justify-center bg-white hover:bg-zinc-200 px-6 text-xs font-bold text-black uppercase tracking-wider transition-colors duration-200 gap-1.5"
                 >
                   Shop Catalog
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <Link
                   href="/seller"
-                  className="inline-flex h-11 items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 px-6 text-sm font-semibold text-white transition"
+                  className="inline-flex h-10 items-center justify-center border border-white/10 hover:border-white bg-transparent hover:bg-white hover:text-black px-6 text-xs font-bold text-white uppercase tracking-wider transition-all duration-200"
                 >
                   Sell on NovaCart
                 </Link>
-              </motion.div>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="pt-4 flex flex-wrap gap-8 items-center border-t border-white/5">
+                <div className="flex items-center gap-2 text-[9px] font-bold text-zinc-500 uppercase tracking-widest">
+                  <ShieldCheck className="h-4 w-4 text-white" />
+                  <span>Stripe Secure Checkouts</span>
+                </div>
+                <div className="flex items-center gap-2 text-[9px] font-bold text-zinc-500 uppercase tracking-widest">
+                  <Truck className="h-4 w-4 text-white" />
+                  <span>GPS Tracked Delivery</span>
+                </div>
+              </div>
             </div>
 
-            {/* Right Interactive Card / Banner Graphic */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, type: "spring" }}
-              className="lg:col-span-5 relative"
-            >
-              <Link
-                href="/products/aerosound-pro-wireless-headphone"
-                className="block relative aspect-square max-w-md mx-auto rounded-3xl overflow-hidden glass p-6 flex flex-col justify-between group cursor-pointer hover:border-primary/40 transition-all duration-300"
-              >
-                <div className="absolute top-0 right-0 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
-                <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-secondary/10 blur-3xl" />
-
-                {/* Visual Content inside Glass Card */}
-                <div className="flex justify-between items-center z-10">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Trending Now</span>
-                  <span className="text-[9px] rounded-full bg-secondary/20 text-secondary border border-secondary/30 px-2 py-0.5 font-bold">HOT</span>
+            {/* Right Product Showcase Column */}
+            <div className="lg:col-span-5 relative h-[420px] w-full flex items-center justify-center">
+              
+              {/* Main Showcase Base */}
+              <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black border border-white/5 p-6 flex flex-col justify-between group cursor-pointer hover:border-white/10 transition-all duration-300">
+                
+                {/* Showcase Header */}
+                <div className="flex justify-between items-center z-10 border-b border-white/5 pb-3">
+                  <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400">Featured Showcase</span>
+                  <span className="text-[8px] border border-white/20 bg-zinc-950 text-white px-2 py-0.5 font-bold uppercase tracking-wider">NEW</span>
                 </div>
-
-                {/* Floating Product Image */}
-                <div className="relative flex-1 flex items-center justify-center my-2 z-10">
+                
+                {/* Big Mock Product Image */}
+                <div className="relative flex-1 flex items-center justify-center my-4 z-10">
                   <img
                     src="/aerosound_headphones.png"
                     alt="AeroSound Headphones"
-                    className="h-44 w-auto object-contain drop-shadow-[0_15px_15px_rgba(168,85,247,0.3)] group-hover:scale-105 group-hover:-rotate-3 transition-all duration-500 ease-out"
+                    className="h-40 w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-105 group-hover:-rotate-2"
                   />
                 </div>
 
+                {/* Info Block */}
                 <div className="space-y-4 z-10">
-                  <div className="text-left">
-                    <h3 className="text-lg font-bold text-white leading-tight">Smart Tech Gear</h3>
-                    <p className="text-[10px] text-muted-foreground">Up to 40% Platform Discount</p>
+                  <div className="text-left border-t border-white/5 pt-3">
+                    <h3 className="text-xs font-black text-white uppercase tracking-wider leading-none">Smart Tech Gear</h3>
+                    <p className="text-[9px] text-zinc-500 uppercase tracking-widest mt-1">Up to 40% Platform Discount</p>
                   </div>
-                  <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between gap-4">
+                  <div className="p-3 bg-zinc-900 border border-white/5 flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-[9px] text-muted-foreground uppercase font-semibold">Featured Gear</p>
-                      <p className="text-xs font-bold text-white">AeroSound Headphones</p>
+                      <p className="text-[9px] text-zinc-500 uppercase font-semibold tracking-wider">AeroSound Headphones</p>
+                      <p className="text-xs font-black text-white uppercase mt-0.5">Professional Audio</p>
                     </div>
-                    <span className="text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 px-2 py-1 rounded-xl">₹1199.99</span>
+                    <span className="text-xs font-black bg-white text-black px-2.5 py-1">₹1199.99</span>
                   </div>
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+
+              {/* Floating Mini Layer Card (adds depth to right column) */}
+              <motion.div
+                initial={{ opacity: 0, x: 20, y: 20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="hidden sm:flex absolute bottom-[100px] right-[-8px] bg-zinc-950 border border-white/10 p-3 shadow-2xl items-center gap-3 w-48 z-20"
+              >
+                <div className="h-8 w-8 bg-zinc-900 border border-white/5 overflow-hidden flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&auto=format&fit=crop&q=80" alt="Watch" className="h-full w-full object-cover" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[8px] text-zinc-500 uppercase font-black tracking-wider">Chrono Classic</p>
+                  <p className="text-[9px] text-white font-black uppercase tracking-wider mt-0.5">₹1129.00</p>
+                </div>
+              </motion.div>
+            </div>
 
           </div>
         </div>
       </section>
 
-      {/* Feature Badges Section */}
+      {/* Feature Badges Grid */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="flex gap-4 p-6 rounded-2xl border border-white/5 bg-card">
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-              <Truck className="h-6 w-6" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex gap-4 p-6 bg-zinc-950 border border-white/5">
+            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center bg-zinc-900 border border-white/10 text-white">
+              <Truck className="h-4 w-4" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white mb-1">Fast Delivery</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">Real-time GPS tracking and OTP security verification on all packages.</p>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Fast Delivery</h4>
+              <p className="text-xs text-zinc-500 leading-relaxed uppercase tracking-wider text-[10px]">Real-time GPS tracking and OTP security verification on all packages.</p>
             </div>
           </div>
-          <div className="flex gap-4 p-6 rounded-2xl border border-white/5 bg-card">
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-secondary/15 text-secondary">
-              <ShieldCheck className="h-6 w-6" />
+          <div className="flex gap-4 p-6 bg-zinc-950 border border-white/5">
+            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center bg-zinc-900 border border-white/10 text-white">
+              <ShieldCheck className="h-4 w-4" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white mb-1">Secure Payments</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">Integrated Stripe and Razorpay checkouts with instant verification.</p>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Secure Payments</h4>
+              <p className="text-xs text-zinc-500 leading-relaxed uppercase tracking-wider text-[10px]">Integrated Stripe and Razorpay checkouts with instant verification.</p>
             </div>
           </div>
-          <div className="flex gap-4 p-6 rounded-2xl border border-white/5 bg-card">
-            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-purple-500/15 text-purple-400">
-              <RotateCcw className="h-6 w-6" />
+          <div className="flex gap-4 p-6 bg-zinc-950 border border-white/5">
+            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center bg-zinc-900 border border-white/10 text-white">
+              <RotateCcw className="h-4 w-4" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white mb-1">Easy Returns</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">7-day hassle-free marketplace returns backed by platform support.</p>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Easy Returns</h4>
+              <p className="text-xs text-zinc-500 leading-relaxed uppercase tracking-wider text-[10px]">7-day hassle-free marketplace returns backed by platform support.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Categories Browser Section */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex items-end justify-between">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-white">Browse Categories</h2>
-            <p className="text-xs text-muted-foreground mt-1">Explore products across our curated departments.</p>
-          </div>
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="text-left border-b border-white/5 pb-4">
+          <h2 className="text-lg font-black uppercase tracking-widest text-zinc-400">Browse Categories</h2>
+          <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">Explore products across our curated departments.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {CATEGORIES.map((cat) => {
@@ -241,12 +252,15 @@ export default function HomePage() {
               <Link
                 key={cat.slug}
                 href={`/products?categorySlug=${cat.slug}`}
-                className={`flex flex-col items-center p-6 rounded-2xl border bg-gradient-to-b ${cat.color} hover:-translate-y-1 transition duration-300 text-center gap-4`}
+                className="flex items-center justify-between p-5 bg-zinc-950 border border-white/5 hover:border-white/20 transition-all duration-300 group"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 text-white">
-                  <IconComponent className="h-6 w-6" />
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 items-center justify-center bg-zinc-900 border border-white/5 text-white">
+                    <IconComponent className="h-4 w-4" />
+                  </div>
+                  <span className="text-xs font-bold text-white uppercase tracking-wider">{cat.name}</span>
                 </div>
-                <span className="text-sm font-bold text-white">{cat.name}</span>
+                <ArrowRight className="h-4 w-4 text-zinc-600 group-hover:text-white transition-colors duration-200" />
               </Link>
             );
           })}
@@ -254,15 +268,15 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex items-end justify-between">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="flex items-end justify-between border-b border-white/5 pb-4">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-white">Featured Arrivals</h2>
-            <p className="text-xs text-muted-foreground mt-1">Check out our highest rated products this week.</p>
+            <h2 className="text-lg font-black uppercase tracking-widest text-zinc-400">Featured Arrivals</h2>
+            <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">Check out our highest rated products this week.</p>
           </div>
-          <Link href="/products" className="group flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
-            View All Catalog
-            <ArrowRight className="h-3 w-3 transition group-hover:translate-x-0.5" />
+          <Link href="/products" className="group flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider hover:underline">
+            View All
+            <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
           </Link>
         </div>
 
@@ -270,9 +284,9 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="animate-pulse flex flex-col gap-4">
-                <div className="aspect-square bg-white/5 rounded-2xl" />
-                <div className="h-4 w-2/3 bg-white/5 rounded" />
-                <div className="h-3 w-1/3 bg-white/5 rounded" />
+                <div className="aspect-square bg-zinc-900 border border-white/5" />
+                <div className="h-3.5 w-2/3 bg-zinc-900" />
+                <div className="h-3 w-1/3 bg-zinc-900" />
               </div>
             ))}
           </div>
@@ -283,6 +297,43 @@ export default function HomePage() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* Testimonials section - Luxury minimalist layout */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="text-left border-b border-white/5 pb-4">
+          <h2 className="text-lg font-black uppercase tracking-widest text-zinc-400">User Reviews</h2>
+          <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">What our clients say about NovaCart platform.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 bg-zinc-950 border border-white/5 flex flex-col justify-between h-48">
+            <p className="text-xs text-zinc-400 italic leading-relaxed">
+              "The minimal layout and transaction security makes this shopping experience feel premium. Delivery tracking was extremely fast."
+            </p>
+            <div className="border-t border-white/5 pt-3 mt-4">
+              <p className="text-[10px] font-bold text-white uppercase tracking-wider">Aravind Sharma</p>
+              <p className="text-[8px] text-zinc-500 uppercase tracking-widest">Verified Buyer</p>
+            </div>
+          </div>
+          <div className="p-6 bg-zinc-950 border border-white/5 flex flex-col justify-between h-48">
+            <p className="text-xs text-zinc-400 italic leading-relaxed">
+              "As a seller, listing products and getting payout approvals takes less than a day. Highly reliable platform workflow."
+            </p>
+            <div className="border-t border-white/5 pt-3 mt-4">
+              <p className="text-[10px] font-bold text-white uppercase tracking-wider">Priya Nair</p>
+              <p className="text-[8px] text-zinc-500 uppercase tracking-widest">Verified Merchant</p>
+            </div>
+          </div>
+          <div className="p-6 bg-zinc-950 border border-white/5 flex flex-col justify-between h-48">
+            <p className="text-xs text-zinc-400 italic leading-relaxed">
+              "Simple, secure, and clean. No spammy ads or flashing UI. The design is absolutely timeless and confident."
+            </p>
+            <div className="border-t border-white/5 pt-3 mt-4">
+              <p className="text-[10px] font-bold text-white uppercase tracking-wider">Rohan Sen</p>
+              <p className="text-[8px] text-zinc-500 uppercase tracking-widest">Premium Customer</p>
+            </div>
+          </div>
+        </div>
       </section>
 
     </div>

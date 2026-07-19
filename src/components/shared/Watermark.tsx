@@ -16,21 +16,21 @@ function useIsMounted() {
 export default function Watermark() {
   const [showBgWatermark, setShowBgWatermark] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const [glowColor, setGlowColor] = useState<"primary" | "secondary" | "gold">("primary");
+  const [glowColor, setGlowColor] = useState<"graphite" | "white" | "dark">("graphite");
 
   const isMounted = useIsMounted();
   if (!isMounted) return null;
 
   const glowStyles = {
-    primary: "from-primary to-purple-600 shadow-primary/20 hover:shadow-primary/40",
-    secondary: "from-secondary to-teal-500 shadow-secondary/20 hover:shadow-secondary/40",
-    gold: "from-amber-500 to-yellow-600 shadow-amber-500/20 hover:shadow-amber-500/40",
+    graphite: "border-white/10 hover:border-white/20 bg-zinc-950 text-zinc-400 shadow-black/40",
+    white: "border-white/20 hover:border-white bg-white text-black shadow-white/5",
+    dark: "border-zinc-800 hover:border-zinc-700 bg-black text-zinc-600 shadow-black/80",
   };
 
   const glowText = {
-    primary: "bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent",
-    secondary: "bg-gradient-to-r from-secondary to-teal-400 bg-clip-text text-transparent",
-    gold: "bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent",
+    graphite: "text-zinc-300",
+    white: "text-white font-black",
+    dark: "text-zinc-500",
   };
 
   return (
@@ -40,7 +40,7 @@ export default function Watermark() {
         {showBgWatermark && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.015 }}
+            animate={{ opacity: 0.012 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className="fixed inset-0 pointer-events-none select-none z-[999] overflow-hidden"
@@ -91,50 +91,41 @@ export default function Watermark() {
         {/* Toggle Button / Badge */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr ${glowStyles[glowColor]} p-[1px] cursor-pointer shadow-lg transition-all duration-300 relative group`}
+          className={`flex h-10 w-10 items-center justify-center border cursor-pointer shadow-xl transition-all duration-300 relative group ${glowStyles[glowColor]}`}
           title="Sudarshan Pandey Design Watermark"
         >
-          {/* Outer glow ring */}
-          <span className="absolute -inset-1 rounded-full bg-inherit opacity-30 blur-sm group-hover:opacity-60 transition duration-300"></span>
-
-          {/* Inner content */}
-          <div className="flex h-full w-full items-center justify-center rounded-full bg-card/90 backdrop-blur-md">
-            {isOpen ? (
-              <X className="h-5 w-5 text-foreground" />
-            ) : (
-              <span className="text-sm font-black tracking-wider text-foreground select-none">
-                SP
-              </span>
-            )}
-          </div>
+          {isOpen ? (
+            <X className="h-4 w-4" />
+          ) : (
+            <span className="text-[10px] font-black tracking-widest uppercase">
+              SP
+            </span>
+          )}
         </motion.button>
 
         {/* Details Card */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              initial={{ opacity: 0, scale: 0.95, y: 5 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 10 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="glass p-5 rounded-2xl w-80 shadow-2xl flex flex-col gap-4 text-foreground relative overflow-hidden"
+              exit={{ opacity: 0, scale: 0.95, y: 5 }}
+              transition={{ duration: 0.3 }}
+              className="glass p-5 rounded-none w-80 shadow-2xl flex flex-col gap-4 text-foreground relative overflow-hidden bg-zinc-950 border border-white/5"
             >
-              {/* Decorative gradient overlay */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -z-10 pointer-events-none" />
-
               {/* Header */}
               <div className="flex items-start justify-between border-b border-white/5 pb-3">
                 <div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
-                    <Sparkles className="h-3 w-3 text-amber-400" /> Design Signature
+                  <div className="flex items-center gap-1.5 text-[9px] font-bold text-zinc-500 uppercase tracking-widest">
+                    <Sparkles className="h-3 w-3 text-zinc-400" /> Design Signature
                   </div>
-                  <h4 className={`text-lg font-bold tracking-tight ${glowText[glowColor]}`}>
+                  <h4 className={`text-base font-black tracking-wider uppercase mt-1 ${glowText[glowColor]}`}>
                     Sudarshan Pandey
                   </h4>
-                  <p className="text-[11px] text-muted-foreground leading-normal mt-0.5">
-                    Creative UI/UX Designer & Technologist
+                  <p className="text-[10px] text-zinc-500 leading-normal uppercase tracking-wider mt-0.5">
+                    UI/UX Designer & Architect
                   </p>
                 </div>
               </div>
@@ -143,22 +134,22 @@ export default function Watermark() {
               <div className="space-y-3 py-1">
                 {/* Background Watermark Toggle */}
                 <div className="flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-2 text-muted-foreground">
+                  <span className="flex items-center gap-2 text-zinc-400 uppercase tracking-wider text-[10px] font-bold">
                     {showBgWatermark ? (
-                      <Eye className="h-3.5 w-3.5 text-primary" />
+                      <Eye className="h-3.5 w-3.5 text-white" />
                     ) : (
-                      <EyeOff className="h-3.5 w-3.5 text-muted-foreground" />
+                      <EyeOff className="h-3.5 w-3.5 text-zinc-600" />
                     )}
                     Background Grid
                   </span>
 
                   <button
                     onClick={() => setShowBgWatermark(!showBgWatermark)}
-                    className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors duration-200 focus:outline-none cursor-pointer ${showBgWatermark ? "bg-primary" : "bg-neutral-800"
+                    className={`relative inline-flex h-4 w-8 items-center rounded-none transition-colors duration-200 focus:outline-none cursor-pointer border ${showBgWatermark ? "bg-white border-white" : "bg-transparent border-white/10"
                       }`}
                   >
                     <span
-                      className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform duration-200 ${showBgWatermark ? "translate-x-4.5" : "translate-x-1"
+                      className={`inline-block h-2.5 w-2.5 transform rounded-none transition-transform duration-200 ${showBgWatermark ? "translate-x-4.5 bg-black" : "translate-x-0.5 bg-white"
                         }`}
                     />
                   </button>
@@ -166,20 +157,20 @@ export default function Watermark() {
 
                 {/* Theme Selector */}
                 <div className="flex items-center justify-between text-xs pt-1">
-                  <span className="flex items-center gap-2 text-muted-foreground">
-                    <Layers className="h-3.5 w-3.5 text-primary" />
+                  <span className="flex items-center gap-2 text-zinc-400 uppercase tracking-wider text-[10px] font-bold">
+                    <Layers className="h-3.5 w-3.5 text-white" />
                     Signature Theme
                   </span>
                   <div className="flex gap-1.5">
-                    {(["primary", "secondary", "gold"] as const).map((color) => (
+                    {(["graphite", "white", "dark"] as const).map((color) => (
                       <button
                         key={color}
                         onClick={() => setGlowColor(color)}
-                        className={`h-4 w-4 rounded-full border cursor-pointer transition ${color === "primary"
-                            ? "bg-primary border-primary/45"
-                            : color === "secondary"
-                              ? "bg-secondary border-secondary/45"
-                              : "bg-amber-500 border-amber-500/45"
+                        className={`h-3 w-3 border cursor-pointer transition ${color === "graphite"
+                            ? "bg-zinc-700 border-zinc-600"
+                            : color === "white"
+                              ? "bg-white border-white"
+                              : "bg-black border-zinc-900"
                           } ${glowColor === color
                             ? "scale-120 ring-1 ring-white/50"
                             : "opacity-60 hover:opacity-100"
@@ -192,12 +183,12 @@ export default function Watermark() {
               </div>
 
               {/* Footer Links */}
-              <div className="border-t border-white/5 pt-3 flex justify-between items-center text-[10px] text-muted-foreground">
-                <span>&copy; {new Date().getFullYear()} Sudarshan Pandey</span>
+              <div className="border-t border-white/5 pt-3 flex justify-between items-center text-[9px] text-zinc-500 uppercase tracking-widest font-bold">
+                <span>&copy; Sudarshan Pandey</span>
                 <div className="flex gap-2">
                   <a
                     href="mailto:pandeysudarshan16@gmail.com"
-                    className="hover:text-foreground transition p-1 rounded hover:bg-white/5"
+                    className="hover:text-white transition p-1 rounded hover:bg-white/5"
                     title="Contact Designer"
                   >
                     <Mail className="h-3.5 w-3.5" />
@@ -206,7 +197,7 @@ export default function Watermark() {
                     href="https://github.com/pandeysudarshan16-ctrl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-foreground transition p-1 rounded hover:bg-white/5"
+                    className="hover:text-white transition p-1 rounded hover:bg-white/5"
                     title="GitHub Portfolio"
                   >
                     <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -218,7 +209,7 @@ export default function Watermark() {
                     href="https://novacart.ai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-foreground transition p-1 rounded hover:bg-white/5"
+                    className="hover:text-white transition p-1 rounded hover:bg-white/5"
                     title="Website"
                   >
                     <Globe className="h-3.5 w-3.5" />

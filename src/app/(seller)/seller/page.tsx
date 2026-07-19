@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { apiClient } from "@/lib/api-client";
 import { 
-  DollarSign, 
+  IndianRupee, 
   Package, 
   ShoppingBag, 
   AlertTriangle, 
@@ -53,8 +53,8 @@ export default function SellerDashboardPage() {
   const kpis = [
     {
       name: "Gross Earnings",
-      value: `$${(metrics?.revenue || 0).toFixed(2)}`,
-      icon: DollarSign,
+      value: `₹${(metrics?.revenue || 0).toFixed(2)}`,
+      icon: IndianRupee,
       color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
     },
     {

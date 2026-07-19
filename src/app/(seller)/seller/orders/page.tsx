@@ -172,10 +172,10 @@ export default function SellerOrdersPage() {
                             </div>
                             <div>
                               <h5 className="font-semibold text-white">{item.product.name}</h5>
-                              <p className="text-[10px] text-muted-foreground mt-0.5">Qty: {item.quantity} &times; ${Number(item.price).toFixed(2)}</p>
+                              <p className="text-[10px] text-muted-foreground mt-0.5">Qty: {item.quantity} &times; ₹{Number(item.price).toFixed(2)}</p>
                             </div>
                           </div>
-                          <span className="font-bold text-white">${(Number(item.price) * item.quantity).toFixed(2)}</span>
+                          <span className="font-bold text-white">₹{(Number(item.price) * item.quantity).toFixed(2)}</span>
                         </div>
                       ))}
                     </div>
@@ -218,7 +218,7 @@ export default function SellerOrdersPage() {
                     <div className="border-t border-white/5 pt-3 flex items-center justify-between gap-4 mt-auto">
                       <div>
                         <p className="text-[10px] uppercase text-muted-foreground">Payout Value</p>
-                        <p className="text-base font-black text-secondary">${orderSubtotal.toFixed(2)}</p>
+                        <p className="text-base font-black text-secondary">₹{orderSubtotal.toFixed(2)}</p>
                       </div>
 
                       {order.status === "PENDING" || order.status === "CONFIRMED" ? (

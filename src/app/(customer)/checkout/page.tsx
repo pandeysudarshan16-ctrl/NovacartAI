@@ -212,7 +212,7 @@ export default function CheckoutPage() {
                   ) : (
                     <>
                       <Lock className="h-4 w-4" />
-                      Place Secure Order (${finalTotal.toFixed(2)})
+                      Place Secure Order (₹{finalTotal.toFixed(2)})
                     </>
                   )}
                 </button>
@@ -241,7 +241,7 @@ export default function CheckoutPage() {
                       <span className="text-[10px] text-muted-foreground">Qty: {item.quantity}</span>
                     </div>
                   </div>
-                  <span className="font-semibold text-white">${(Number(item.product.price) * item.quantity).toFixed(2)}</span>
+                  <span className="font-semibold text-white">₹{(Number(item.product.price) * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
@@ -249,24 +249,24 @@ export default function CheckoutPage() {
             <div className="space-y-3 text-xs border-t border-white/5 pt-4">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal ({cartCount} items)</span>
-                <span className="font-semibold text-white">${cartTotal.toFixed(2)}</span>
+                <span className="font-semibold text-white">₹{cartTotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Shipping Cost</span>
                 <span className="font-semibold text-white">
-                  {shippingCost === 0 ? <span className="text-secondary">FREE</span> : `$${shippingCost.toFixed(2)}`}
+                  {shippingCost === 0 ? <span className="text-secondary">FREE</span> : `₹${shippingCost.toFixed(2)}`}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Estimated Tax (5%)</span>
-                <span className="font-semibold text-white">${estimatedTax.toFixed(2)}</span>
+                <span className="font-semibold text-white">₹{estimatedTax.toFixed(2)}</span>
               </div>
             </div>
 
             <div className="flex justify-between items-baseline border-t border-white/5 pt-4">
               <span className="text-sm font-bold text-white">Total</span>
               <span className="text-2xl font-extrabold text-secondary tracking-tight">
-                ${finalTotal.toFixed(2)}
+                ₹{finalTotal.toFixed(2)}
               </span>
             </div>
 

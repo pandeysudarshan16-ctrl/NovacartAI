@@ -216,7 +216,7 @@ export default function EditProductPage({ params }: PageProps) {
 
           {/* Price */}
           <div className="space-y-2">
-            <label className="text-xs font-bold text-white uppercase">Unit Price ($)</label>
+            <label className="text-xs font-bold text-white uppercase">Unit Price (₹)</label>
             <input
               type="number"
               step="0.01"
@@ -230,7 +230,7 @@ export default function EditProductPage({ params }: PageProps) {
 
           {/* Compare Price */}
           <div className="space-y-2">
-            <label className="text-xs font-bold text-white uppercase">Compare Price ($ - Optional)</label>
+            <label className="text-xs font-bold text-white uppercase">Compare Price (₹ - Optional)</label>
             <input
               type="number"
               step="0.01"

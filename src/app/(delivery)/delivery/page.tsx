@@ -8,7 +8,7 @@ import {
   Phone, 
   User, 
   Package, 
-  DollarSign, 
+  IndianRupee, 
   Lock,
   Loader2,
   Map
@@ -422,7 +422,7 @@ export default function DeliveryDashboardPage() {
                           </div>
                           
                           <div className="flex items-center gap-1 text-[10px] font-bold text-secondary bg-secondary/10 border border-secondary/20 px-2 py-0.5 rounded-full uppercase">
-                            <DollarSign className="h-3 w-3" /> $10.00 Pay
+                            <IndianRupee className="h-3 w-3" /> ₹10.00 Pay
                           </div>
                         </div>
 

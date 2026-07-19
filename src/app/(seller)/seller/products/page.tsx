@@ -143,7 +143,7 @@ export default function SellerProductsPage() {
                       {product.category.name}
                     </td>
                     <td className="px-6 py-4 font-bold text-white">
-                      ${Number(product.price).toFixed(2)}
+                      ₹{Number(product.price).toFixed(2)}
                     </td>
                     <td className="px-6 py-4">
                       <span className={`font-semibold ${product.stock <= 0 ? "text-destructive" : "text-white"}`}>

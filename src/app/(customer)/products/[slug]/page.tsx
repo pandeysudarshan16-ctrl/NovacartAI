@@ -71,6 +71,7 @@ const MOCK_CATALOG = [
     id: "prod-4",
     name: "SleekLeather Crossbody Bag",
     slug: "sleekleather-crossbody-bag",
+    description: "Elevate your everyday style with the SleekLeather Crossbody Bag. Handcrafted from 100% genuine full-grain leather, this premium accessory features brushed brass hardware and an adjustable strap for effortless versatility. The spacious interior includes dedicated pockets for organisation, making it ideal for both work and weekend.",
     price: 1145.00,
     comparePrice: 1185.00,
     images: ["https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop&q=80"],

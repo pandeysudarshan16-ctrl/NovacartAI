@@ -76,7 +76,7 @@ export class CheckoutService {
         data: {
           customerId: userId,
           addressId: address.id,
-          status: OrderStatus.PROCESSING, // Sets order as immediately ready for seller fulfillment
+          status: OrderStatus.PENDING, // New orders start as PENDING for seller confirmation
           totalAmount,
           shippingCost,
         },

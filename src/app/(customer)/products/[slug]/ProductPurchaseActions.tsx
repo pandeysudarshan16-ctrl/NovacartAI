@@ -80,7 +80,7 @@ export default function ProductPurchaseActions({ productId, stock }: ProductPurc
               className={`flex-1 h-12 flex items-center justify-center gap-2 rounded-xl transition duration-200 border text-sm font-semibold tracking-wide ${
                 success
                   ? "bg-secondary/20 border-secondary text-secondary"
-                  : "bg-primary border-primary text-white hover:bg-primary/95 shadow shadow-primary/10"
+                  : "bg-primary border-primary text-primary-foreground hover:bg-primary/95 shadow shadow-primary/10"
               }`}
             >
               {loading ? (

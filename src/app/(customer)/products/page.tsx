@@ -166,7 +166,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
               </p>
               <Link
                 href="/products"
-                className="py-2 px-4 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition"
+                className="py-2 px-4 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition"
               >
                 Clear All Filters
               </Link>
@@ -204,7 +204,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
                           pathname: "/products",
                           query: { ...resolvedParams, page: (pageNum + 1).toString() },
                         }}
-                        className="py-2 px-4 rounded-xl bg-primary hover:bg-primary/90 text-xs font-semibold text-white transition"
+                        className="py-2 px-4 rounded-xl bg-primary hover:bg-primary/90 text-xs font-semibold text-primary-foreground transition"
                       >
                         Next
                       </Link>

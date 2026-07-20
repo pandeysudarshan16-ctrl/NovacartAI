@@ -100,7 +100,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-bold text-white transition disabled:opacity-50 shadow shadow-primary/20"
+            className="w-full h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-bold text-primary-foreground transition disabled:opacity-50 shadow shadow-primary/20"
           >
             {submitting ? (
               <>

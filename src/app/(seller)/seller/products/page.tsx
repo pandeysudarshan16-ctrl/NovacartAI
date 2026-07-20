@@ -84,7 +84,7 @@ export default function SellerProductsPage() {
         </div>
         <Link
           href="/seller/products/new"
-          className="inline-flex h-10 items-center justify-center rounded-xl bg-primary hover:bg-primary/95 px-4 text-xs font-semibold text-white transition shadow shadow-primary/20 gap-1.5"
+          className="inline-flex h-10 items-center justify-center rounded-xl bg-primary hover:bg-primary/95 px-4 text-xs font-semibold text-primary-foreground transition shadow shadow-primary/20 gap-1.5"
         >
           <Plus className="h-4 w-4" />
           Add Product
@@ -103,7 +103,7 @@ export default function SellerProductsPage() {
           </p>
           <Link
             href="/seller/products/new"
-            className="py-2.5 px-4 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition"
+            className="py-2.5 px-4 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition"
           >
             Add First Product
           </Link>

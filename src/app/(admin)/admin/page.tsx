@@ -203,7 +203,7 @@ export default function AdminDashboardPage() {
           <div className="grid grid-cols-2 gap-3 mt-4">
             <Link
               href="/admin/products"
-              className="py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-[10px] font-bold text-white text-center transition"
+              className="py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-[10px] font-bold text-primary-foreground text-center transition"
             >
               Verify Products
             </Link>

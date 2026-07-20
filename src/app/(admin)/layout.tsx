@@ -93,7 +93,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition ${
                   active 
-                    ? "bg-primary text-white" 
+                    ? "bg-primary text-primary-foreground" 
                     : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
                 }`}
               >
@@ -199,7 +199,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       onClick={() => setMobileSidebarOpen(false)}
                       className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition ${
                         active 
-                          ? "bg-primary text-white" 
+                          ? "bg-primary text-primary-foreground" 
                           : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
                       }`}
                     >

@@ -225,7 +225,7 @@ export default function SellerOrdersPage() {
                         <button
                           onClick={() => handleFulfillOrder(order.id)}
                           disabled={fulfillingId === order.id}
-                          className="h-9 px-4 rounded-lg bg-primary hover:bg-primary/95 text-[10px] font-bold text-white transition flex items-center gap-1 shadow shadow-primary/20 disabled:opacity-50"
+                          className="h-9 px-4 rounded-lg bg-primary hover:bg-primary/95 text-[10px] font-bold text-primary-foreground transition flex items-center gap-1 shadow shadow-primary/20 disabled:opacity-50"
                         >
                           {fulfillingId === order.id ? (
                             <>

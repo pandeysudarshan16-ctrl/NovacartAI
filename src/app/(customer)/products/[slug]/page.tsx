@@ -108,7 +108,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <p className="text-sm text-muted-foreground">The product slug you are trying to reach does not exist.</p>
         <Link
           href="/products"
-          className="inline-block mt-4 py-2.5 px-6 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition"
+          className="inline-block mt-4 py-2.5 px-6 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition"
         >
           Return to Shop Catalog
         </Link>

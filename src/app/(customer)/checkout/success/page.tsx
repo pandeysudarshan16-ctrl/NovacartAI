@@ -49,7 +49,7 @@ function SuccessContent() {
       <div className="w-full grid grid-cols-1 gap-3">
         <Link
           href="/products"
-          className="h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-bold text-white transition shadow shadow-primary/20"
+          className="h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-bold text-primary-foreground transition shadow shadow-primary/20"
         >
           <ShoppingBag className="h-4 w-4" />
           Continue Shopping

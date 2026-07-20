@@ -93,7 +93,7 @@ export default function RegisterPage() {
                   onClick={() => setRole(item.value)}
                   className={`py-2 rounded-xl text-[10px] font-bold border transition ${
                     role === item.value
-                      ? "bg-primary border-primary text-white"
+                      ? "bg-primary border-primary text-primary-foreground"
                       : "bg-muted border-white/5 text-muted-foreground hover:text-white"
                   }`}
                 >
@@ -165,7 +165,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-bold text-white transition disabled:opacity-50 shadow shadow-primary/20"
+            className="w-full h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-bold text-primary-foreground transition disabled:opacity-50 shadow shadow-primary/20"
           >
             {submitting ? (
               <>

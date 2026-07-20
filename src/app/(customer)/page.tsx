@@ -13,10 +13,8 @@ import {
   ShieldCheck,
   Truck,
   RotateCcw,
-  Sparkles,
-  ShoppingBag
+  Sparkles
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 // High-quality public domain mockup images
 const MOCK_PRODUCTS = [
@@ -152,8 +150,10 @@ export default function HomePage() {
             <div className="lg:col-span-5 relative h-[420px] w-full flex items-center justify-center">
               
               {/* Main Showcase Base */}
-              <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black border border-white/5 p-6 flex flex-col justify-between group cursor-pointer hover:border-white/10 transition-all duration-300">
-                
+              <Link
+                href="/products/aerosound-pro-wireless-headphone"
+                className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black border border-white/5 p-6 flex flex-col justify-between group cursor-pointer hover:border-white/10 transition-all duration-300"
+              >
                 {/* Showcase Header */}
                 <div className="flex justify-between items-center z-10 border-b border-white/5 pb-3">
                   <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400">Featured Showcase</span>
@@ -183,23 +183,8 @@ export default function HomePage() {
                     <span className="text-xs font-black bg-white text-black px-2.5 py-1">₹1199.99</span>
                   </div>
                 </div>
-              </div>
+              </Link>
 
-              {/* Floating Mini Layer Card (adds depth to right column) */}
-              <motion.div
-                initial={{ opacity: 0, x: 20, y: 20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="hidden sm:flex absolute bottom-[100px] right-[-8px] bg-zinc-950 border border-white/10 p-3 shadow-2xl items-center gap-3 w-48 z-20"
-              >
-                <div className="h-8 w-8 bg-zinc-900 border border-white/5 overflow-hidden flex-shrink-0">
-                  <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&auto=format&fit=crop&q=80" alt="Watch" className="h-full w-full object-cover" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-[8px] text-zinc-500 uppercase font-black tracking-wider">Chrono Classic</p>
-                  <p className="text-[9px] text-white font-black uppercase tracking-wider mt-0.5">₹1129.00</p>
-                </div>
-              </motion.div>
             </div>
 
           </div>
@@ -308,7 +293,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 bg-zinc-950 border border-white/5 flex flex-col justify-between h-48">
             <p className="text-xs text-zinc-400 italic leading-relaxed">
-              "The minimal layout and transaction security makes this shopping experience feel premium. Delivery tracking was extremely fast."
+              &quot;The minimal layout and transaction security makes this shopping experience feel premium. Delivery tracking was extremely fast.&quot;
             </p>
             <div className="border-t border-white/5 pt-3 mt-4">
               <p className="text-[10px] font-bold text-white uppercase tracking-wider">Aravind Sharma</p>
@@ -317,7 +302,7 @@ export default function HomePage() {
           </div>
           <div className="p-6 bg-zinc-950 border border-white/5 flex flex-col justify-between h-48">
             <p className="text-xs text-zinc-400 italic leading-relaxed">
-              "As a seller, listing products and getting payout approvals takes less than a day. Highly reliable platform workflow."
+              &quot;As a seller, listing products and getting payout approvals takes less than a day. Highly reliable platform workflow.&quot;
             </p>
             <div className="border-t border-white/5 pt-3 mt-4">
               <p className="text-[10px] font-bold text-white uppercase tracking-wider">Priya Nair</p>
@@ -326,7 +311,7 @@ export default function HomePage() {
           </div>
           <div className="p-6 bg-zinc-950 border border-white/5 flex flex-col justify-between h-48">
             <p className="text-xs text-zinc-400 italic leading-relaxed">
-              "Simple, secure, and clean. No spammy ads or flashing UI. The design is absolutely timeless and confident."
+              &quot;Simple, secure, and clean. No spammy ads or flashing UI. The design is absolutely timeless and confident.&quot;
             </p>
             <div className="border-t border-white/5 pt-3 mt-4">
               <p className="text-[10px] font-bold text-white uppercase tracking-wider">Rohan Sen</p>

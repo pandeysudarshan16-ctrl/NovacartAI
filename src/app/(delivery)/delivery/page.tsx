@@ -309,7 +309,7 @@ export default function DeliveryDashboardPage() {
                   <button
                     onClick={() => handleConfirmPickup(active.order.id)}
                     disabled={updatingId === active.order.id}
-                    className="w-full h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition disabled:opacity-50"
+                    className="w-full h-11 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition disabled:opacity-50"
                   >
                     {updatingId === active.order.id ? (
                       <>
@@ -442,7 +442,7 @@ export default function DeliveryDashboardPage() {
                       <button
                         onClick={() => handleAcceptDelivery(order.id)}
                         disabled={updatingId === order.id}
-                        className="w-full h-10 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition disabled:opacity-50 shadow shadow-primary/20"
+                        className="w-full h-10 flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition disabled:opacity-50 shadow shadow-primary/20"
                       >
                         {updatingId === order.id ? (
                           <>

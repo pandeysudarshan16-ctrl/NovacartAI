@@ -152,7 +152,7 @@ export default function CatalogFilters({ categories, initialFilters }: CatalogFi
       {/* Apply Button */}
       <button
         type="submit"
-        className="w-full py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-xs font-semibold text-white transition shadow shadow-primary/15"
+        className="w-full py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-xs font-semibold text-primary-foreground transition shadow shadow-primary/15"
       >
         Apply Filters
       </button>

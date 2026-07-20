@@ -62,7 +62,7 @@ export default function CartPage() {
             </p>
             <Link
               href="/products"
-              className="py-2.5 px-6 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition flex items-center gap-1.5"
+              className="py-2.5 px-6 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition flex items-center gap-1.5"
             >
               <ArrowLeft className="h-4 w-4" />
               Continue Shopping
@@ -209,7 +209,7 @@ export default function CartPage() {
               <div className="space-y-3 pt-2">
                 <Link
                   href="/checkout"
-                  className="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition shadow shadow-primary/20"
+                  className="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition shadow shadow-primary/20"
                 >
                   <CreditCard className="h-4 w-4" />
                   Proceed to Secure Checkout

@@ -356,7 +356,7 @@ export default function EditProductPage({ params }: PageProps) {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-white transition shadow shadow-primary/20 disabled:opacity-50"
+            className="w-full h-11 flex items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary/95 text-xs font-semibold text-primary-foreground transition shadow shadow-primary/20 disabled:opacity-50"
           >
             {submitting ? (
               <>
